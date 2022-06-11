@@ -1,7 +1,8 @@
-package ru.zinoview
+package ru.zinoview.core
 
 import android.content.Context
 import androidx.annotation.StringRes
+import ru.zinoview.R
 
 interface ResourceProvider {
 

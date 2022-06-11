@@ -1,4 +1,4 @@
-package ru.zinoview
+package ru.zinoview.core
 
 interface Save<T> {
 

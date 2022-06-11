@@ -1,4 +1,4 @@
-package ru.zinoview.cloud
+package ru.zinoview.core.cloud
 
 interface NetworkServiceProvider {
 

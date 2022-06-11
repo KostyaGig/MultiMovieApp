@@ -1,4 +1,4 @@
-package ru.zinoview.cloud
+package ru.zinoview.core.cloud
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
