@@ -3,6 +3,7 @@ package ru.zinoview
 import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Before
+import ru.zinoview.core.ResourceProvider
 
 internal class ResourceProviderTest {
 
