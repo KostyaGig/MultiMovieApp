@@ -6,6 +6,7 @@ import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.Before
+import ru.zinoview.movies.core.Movie
 import ru.zinoview.movies.data.MoviesRepository
 
 class MoviesRepositoryTest {
@@ -57,7 +58,7 @@ class MoviesRepositoryTest {
         }
     }
 
-    interface  TestMovie {
+    interface  TestMovie : Movie {
 
         data class Base(
             private val id: String,
