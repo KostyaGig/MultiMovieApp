@@ -1,6 +1,6 @@
 package ru.zinoview.movies.core
 
-interface Movie {
+interface Movie : BaseMovie {
 
     class Base(
         private val mainMovieInfo: MainMovieData,

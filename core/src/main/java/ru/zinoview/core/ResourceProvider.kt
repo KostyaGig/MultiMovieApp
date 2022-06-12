@@ -20,7 +20,7 @@ interface ResourceProvider {
             return when(id){
                 R.string.no_connection_error_text -> "No connection"
                 R.string.progress_text -> "Progress"
-                R.string.something_went_wrong_text -> "Something went wrong"
+                R.string.something_went_wrong_error_text -> "Something went wrong"
                 else -> throw IllegalArgumentException("String by $id wasn't found")
             }
         }
