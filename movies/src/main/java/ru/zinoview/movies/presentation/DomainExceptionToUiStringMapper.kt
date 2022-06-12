@@ -4,10 +4,11 @@ import ru.zinoview.core.Mapper
 import ru.zinoview.core.ResourceProvider
 import ru.zinoview.movies.R
 import ru.zinoview.movies.domain.DomainException
+import javax.inject.Inject
 
 interface DomainExceptionToUiStringMapper : Mapper<DomainException,String> {
 
-    class Base(
+    class Base @Inject constructor(
         private val resourceProvider: ResourceProvider
     ) : DomainExceptionToUiStringMapper {
 

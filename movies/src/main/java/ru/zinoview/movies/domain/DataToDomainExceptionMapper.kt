@@ -3,6 +3,7 @@ package ru.zinoview.movies.domain
 import ru.zinoview.core.Mapper
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import javax.inject.Inject
 
 interface DataToDomainExceptionMapper : Mapper<Exception,DomainException> {
 

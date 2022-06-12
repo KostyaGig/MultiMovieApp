@@ -4,10 +4,11 @@ import kotlinx.coroutines.delay
 import ru.zinoview.core.Data
 import ru.zinoview.movies.data.DataMovies
 import ru.zinoview.movies.data.MoviesRepository
+import javax.inject.Inject
 
 interface MoviesInteractor : Data<DomainMovies> {
 
-    class Base(
+    class Base (
         private val repository: MoviesRepository<DataMovies>,
         private val mapper: DataToDomainMoviesMapper
     ) : MoviesInteractor {
@@ -15,7 +16,7 @@ interface MoviesInteractor : Data<DomainMovies> {
         override suspend fun data(): DomainMovies = repository.data().map(mapper)
     }
 
-    class Delay(
+    class Delay (
         private val delay: Long,
         private val interactor: MoviesInteractor
     ) : MoviesInteractor {

@@ -9,6 +9,5 @@ import javax.inject.Singleton
 interface CoreModule {
 
     @Binds
-    @Singleton
     fun provideResourceProvider(resourceProvider: ResourceProvider.Base): ResourceProvider
 }

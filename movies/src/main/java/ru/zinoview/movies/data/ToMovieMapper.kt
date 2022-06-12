@@ -4,6 +4,7 @@ import ru.zinoview.movies.core.ExtraMovieData
 import ru.zinoview.movies.core.MainMovieData
 import ru.zinoview.movies.core.Movie
 import ru.zinoview.movies.core.MovieMapper
+import javax.inject.Inject
 
 interface ToMovieMapper : MovieMapper<Movie> {
 

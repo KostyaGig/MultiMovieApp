@@ -5,7 +5,7 @@ import ru.zinoview.coreuimodule.UiModel
 
 interface UiMovies : UiModel, Show<MoviesAdapter> {
 
-    class Base(
+    data class Base(
         private val movies: List<UiMovie>
     ) : UiMovies {
 

@@ -3,10 +3,11 @@ package ru.zinoview.movies.data
 import ru.zinoview.core.Data
 import ru.zinoview.movies.data.cloud.MoviesCloudDataSource
 import java.lang.Exception
+import javax.inject.Inject
 
 interface MoviesRepository<T> : Data<T> {
 
-    class Base(
+    class Base (
         private val cloudDataSource: MoviesCloudDataSource,
         private val mapper: ToMovieMapper
     ) : MoviesRepository<DataMovies> {
