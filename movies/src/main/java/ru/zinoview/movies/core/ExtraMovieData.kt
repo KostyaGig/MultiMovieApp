@@ -1,28 +1,25 @@
 package ru.zinoview.movies.core
 
-import ru.zinoview.movies.presentation.MovieSame
+import ru.zinoview.core.Mapper
+import ru.zinoview.movies.presentation.UiMovie
 
-interface ExtraMovieData : MovieSame{
+interface ExtraMovieData : Mapper<Triple<String,String,String>,UiMovie> {
 
-    override fun sameId(id: String) = false
 
     abstract class Base(
         private val description: String,
         private val year: String
     ) : ExtraMovieData {
 
-        override fun sameData(description: String)
-            = this.description == description
+        override fun map(mainData: Triple<String, String,String>)
+            = UiMovie.Base(mainData.first,mainData.second,mainData.third,description, year)
     }
     class WithDescription(
-        private val description: String,
-        private val year: String
-    ) : Base(description, year) {
-
-
-    }
+        description: String,
+        year: String
+    ) : Base(description, year)
 
     class EmptyDescription(
-        private val year: String
+        year: String
     ) : Base("",year)
 }

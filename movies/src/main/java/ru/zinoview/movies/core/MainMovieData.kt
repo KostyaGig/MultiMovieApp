@@ -1,36 +1,31 @@
 package ru.zinoview.movies.core
 
-import android.widget.TextView
-import ru.zinoview.coreuimodule.Bind
-import ru.zinoview.movies.presentation.MovieSame
+import ru.zinoview.core.Mapper
+import ru.zinoview.movies.presentation.UiMovie
 
-interface MainMovieData : Bind<TextView>, MovieSame {
+interface MainMovieData : Mapper<ExtraMovieData,UiMovie> {
 
-    override fun sameData(description: String) = false
 
     abstract class Base(
         private val id: String,
-        private val title: String
+        private val title: String,
+        private val image: String
     ) : MainMovieData {
-        override fun bind(text: TextView) {
-            text.text = title
-        }
 
-        override fun sameId(id: String)
-            = this.id == id
+        override fun map(extraData: ExtraMovieData): UiMovie
+            = extraData.map(Triple(id,title,image))
     }
 
     class WithImage(
-        private val id: String,
-        private val image: String,
+        id: String,
+        image: String,
         title: String
-    ) : Base(id,title) {
+    ) : Base(id,title,image) {
 
-        override fun sameId(id: String) = this.id == id
     }
 
     class EmptyImage(
-        private val id: String,
+        id: String,
         title: String
-    ) : Base(id,title)
+    ) : Base(id,title,"")
 }

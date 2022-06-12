@@ -9,6 +9,6 @@ interface DomainToUiMovieMapper : MovieMapper<UiMovie> {
     class Base : DomainToUiMovieMapper {
 
         override fun map(mainData: MainMovieData, extraData: ExtraMovieData): UiMovie
-            = UiMovie.Base(mainData,extraData)
+            = mainData.map(extraData)
     }
 }
