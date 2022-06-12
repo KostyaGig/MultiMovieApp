@@ -1,4 +1,4 @@
-package ru.zinoview.core
+package ru.zinoview
 
 interface Data <T> {
 
