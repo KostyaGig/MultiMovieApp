@@ -19,7 +19,7 @@
         android:name=".MovieApp"
         >
         <activity
-            android:name=".MainActivity"
+            android:name="ru.zinoview.multimovieapp.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
