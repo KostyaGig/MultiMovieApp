@@ -1,16 +1,16 @@
 package ru.zinoview.movies.data.cloud
 
 import ru.zinoview.core.Data
-import ru.zinoview.core.cloud.NetworkServiceProvider
+import javax.inject.Inject
 
 interface MoviesCloudDataSource : Data<List<CloudMovies.CloudMovie>> {
 
-    class Base(
-        private val networkServiceProvider: NetworkServiceProvider,
+    class Base @Inject constructor(
+        private val service: MoviesService,
         private val mapper: ToCloudMovieMapper
     ) : MoviesCloudDataSource {
 
         override suspend fun data(): List<CloudMovies.CloudMovie> =
-            networkServiceProvider.service(MoviesService::class.java).movies().map(mapper)
+            service.movies().map(mapper)
     }
 }
