@@ -5,10 +5,17 @@ import android.view.ViewGroup
 
 interface Adapter<T : UiModel> {
 
+    fun update(data: List<T>)
+
     abstract class Base<T : UiModel, E : Same<T>>(
         callback: BaseDiffUtilCallback<T,E>,
         private val viewHolderByViewType: ViewHolderByViewType<T>
-    ) : androidx.recyclerview.widget.ListAdapter<E,BaseViewHolder<T>>(callback) {
+    ) : androidx.recyclerview.widget.ListAdapter<E,BaseViewHolder<T>>(callback), Adapter<T> {
+
+        override fun update(data: List<T>) {
+            val list = data.map { item -> item as E }
+            submitList(list)
+        }
 
         override fun getItemViewType(position: Int)
             = viewHolderByViewType.viewType(getItem(position) as T)
