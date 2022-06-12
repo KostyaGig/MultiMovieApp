@@ -1,6 +1,5 @@
 package ru.zinoview.di
 
-import android.content.Context
 import dagger.Binds
 import dagger.Module
 import ru.zinoview.ResourceProvider
@@ -11,5 +10,5 @@ interface CoreModule {
 
     @Binds
     @Singleton
-    fun provideResourceProvider(context: Context): ResourceProvider
+    fun provideResourceProvider(resourceProvider: ResourceProvider.Base): ResourceProvider
 }
