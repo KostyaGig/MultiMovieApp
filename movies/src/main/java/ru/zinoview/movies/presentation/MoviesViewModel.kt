@@ -1,5 +1,6 @@
 package ru.zinoview.movies.presentation
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import ru.zinoview.coreuimodule.BaseViewModel
 import ru.zinoview.coreuimodule.DispatcherWork

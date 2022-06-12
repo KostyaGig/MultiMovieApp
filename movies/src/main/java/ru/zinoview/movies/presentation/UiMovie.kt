@@ -5,12 +5,12 @@ import ru.zinoview.movies.core.MainMovieData
 
 sealed class UiMovie {
 
-    class Base(
+    data class Base(
         private val mainData: MainMovieData,
         private val extraData: ExtraMovieData
     ) : UiMovie()
 
-    class Failure(
+    data class Failure(
         private val errorMessage: String
     ) : UiMovie()
 

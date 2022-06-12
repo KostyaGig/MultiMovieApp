@@ -4,7 +4,7 @@ import ru.zinoview.coreuimodule.UiModel
 
 interface UiMovies : UiModel {
 
-    class Base(
+    data class Base(
         private val movies: List<UiMovie>
     ) : UiMovies
 }

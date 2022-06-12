@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_connection_error_text">No connection</string>
+    <string name="progress_text">Progress</string>
+    <string name="something_went_wrong_error_text">Something went wrong</string>
+    <string name="long_connection_error_text">Long connection</string>
+</resources>
