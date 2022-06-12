@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 interface BaseViewModel<T : UiModel> : Observe<T> {
 
-    class Base<T : UiModel>(
+    abstract class Base<T : UiModel>(
         private val communication: Communication<T>
     ) : BaseViewModel<T>, ViewModel() {
 
