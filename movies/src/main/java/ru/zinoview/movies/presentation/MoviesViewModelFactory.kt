@@ -2,11 +2,9 @@ package ru.zinoview.movies.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import ru.zinoview.core.ResourceProvider
 import ru.zinoview.coreuimodule.*
-import ru.zinoview.movies.domain.DataToDomainMoviesMapper
 import ru.zinoview.movies.domain.MoviesInteractor
 
 interface MoviesViewModelFactory : ViewModelProvider.Factory {

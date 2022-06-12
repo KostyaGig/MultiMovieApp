@@ -1,13 +1,28 @@
 package ru.zinoview.movies.core
 
-interface ExtraMovieData {
+import ru.zinoview.movies.presentation.MovieSame
 
-    class Base(
+interface ExtraMovieData : MovieSame{
+
+    override fun sameId(id: String) = false
+
+    abstract class Base(
         private val description: String,
         private val year: String
-    ) : ExtraMovieData
+    ) : ExtraMovieData {
+
+        override fun sameData(description: String)
+            = this.description == description
+    }
+    class WithDescription(
+        private val description: String,
+        private val year: String
+    ) : Base(description, year) {
+
+
+    }
 
     class EmptyDescription(
         private val year: String
-    ) : ExtraMovieData
+    ) : Base("",year)
 }

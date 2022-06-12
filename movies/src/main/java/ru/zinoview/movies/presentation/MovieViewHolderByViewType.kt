@@ -2,7 +2,6 @@ package ru.zinoview.movies.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import ru.zinoview.coreuimodule.BaseViewHolder
 import ru.zinoview.coreuimodule.ViewHolderByViewType
 import ru.zinoview.movies.databinding.FailureItemBinding
 import ru.zinoview.movies.databinding.MovieItemBinding

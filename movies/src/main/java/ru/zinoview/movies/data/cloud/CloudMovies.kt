@@ -33,12 +33,12 @@ interface CloudMovies {
                 val mainData = if (image == null) {
                     MainMovieData.EmptyImage(id.toString(),title)
                 } else {
-                    MainMovieData.Base(id.toString(), image, title)
+                    MainMovieData.WithImage(id.toString(), image, title)
                 }
                 val extraData = if (description == null) {
                     ExtraMovieData.EmptyDescription(year.toString())
                 } else {
-                    ExtraMovieData.Base(description, year.toString())
+                    ExtraMovieData.WithDescription(description, year.toString())
                 }
                 return mapper.map(mainData, extraData)
             }
