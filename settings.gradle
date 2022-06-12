@@ -16,3 +16,4 @@ rootProject.name = "MultiMovieApp"
 include ':app'
 include ':core'
 include ':movies'
+include ':coreUiModule'
