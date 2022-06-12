@@ -5,6 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.IllegalStateException
+import java.util.concurrent.TimeUnit
 
 interface RetrofitWrapper {
 
@@ -25,6 +26,8 @@ interface RetrofitWrapper {
 
                 val client = OkHttpClient.Builder()
                     .addInterceptor(interceptor)
+                    .readTimeout(TIME_OUT, TimeUnit.SECONDS)
+                    .connectTimeout(TIME_OUT,TimeUnit.SECONDS)
                     .build()
 
                 retrofit = Retrofit.Builder()
@@ -38,6 +41,7 @@ interface RetrofitWrapper {
 
         private companion object {
             private const val BASE_URL = "https://s3-eu-west-1.amazonaws.com/"
+            private const val TIME_OUT = 60L
         }
 
         override fun retrofit() = this
