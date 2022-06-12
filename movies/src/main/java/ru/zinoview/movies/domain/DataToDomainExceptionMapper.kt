@@ -6,7 +6,6 @@ import java.net.UnknownHostException
 
 interface DataToDomainExceptionMapper : Mapper<Exception,DomainException> {
 
-    // todo test
     class Base : DataToDomainExceptionMapper {
         override fun map(e: Exception): DomainException {
             return when(e) {

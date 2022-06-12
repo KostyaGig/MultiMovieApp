@@ -4,7 +4,6 @@ import ru.zinoview.movies.core.Movie
 import ru.zinoview.movies.core.MoviesMapper
 import java.lang.Exception
 
-// todo test for mapper
 interface DataToDomainMoviesMapper : MoviesMapper<DomainMovies,Exception> {
 
     class Base(
