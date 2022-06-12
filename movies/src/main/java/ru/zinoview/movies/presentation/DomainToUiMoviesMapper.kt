@@ -1,7 +1,6 @@
 package ru.zinoview.movies.presentation
 
 import ru.zinoview.movies.core.*
-import ru.zinoview.movies.domain.DataToDomainExceptionMapper
 import ru.zinoview.movies.domain.DomainException
 
 interface DomainToUiMoviesMapper : MoviesMapper<List<UiMovie>,DomainException> {

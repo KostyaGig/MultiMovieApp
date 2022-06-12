@@ -33,7 +33,9 @@ class MovieApp : Application() {
             DataToDomainMoviesMapper.Base(DataToDomainExceptionMapper.Base())
         )
 
-        factory = MoviesViewModelFactory.Base(interactor, resourceProvider)
+        val delayInteractor  = MoviesInteractor.Delay(3000,interactor)
+
+        factory = MoviesViewModelFactory.Base(delayInteractor, resourceProvider)
 
     }
 

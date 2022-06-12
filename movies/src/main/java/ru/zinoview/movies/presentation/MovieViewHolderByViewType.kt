@@ -2,7 +2,6 @@ package ru.zinoview.movies.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import ru.zinoview.coreuimodule.BaseViewHolder
 import ru.zinoview.coreuimodule.ViewHolderByViewType
 import ru.zinoview.movies.databinding.FailureItemBinding
 import ru.zinoview.movies.databinding.MovieItemBinding
@@ -14,8 +13,8 @@ interface MovieViewHolderByViewType : ViewHolderByViewType<UiMovie> {
 
         override fun viewType(item: UiMovie) = when (item) {
             is UiMovie.Progress -> PROGRESS
-            is UiMovie.Base -> FAILURE
-            is UiMovie.Failure -> BASE
+            is UiMovie.Base -> BASE
+            is UiMovie.Failure -> FAILURE
             else -> throw IllegalArgumentException("MovieItemToIntViewTypeMapper.Base viewType() doesn't process $item")
         }
 
