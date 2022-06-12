@@ -3,6 +3,7 @@ package ru.zinoview.multimovieapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import ru.zinoview.multimovieapp.MovieApp
 import ru.zinoview.multimovieapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
