@@ -14,8 +14,8 @@ interface MovieViewHolderByViewType : ViewHolderByViewType<UiMovie> {
 
         override fun viewType(item: UiMovie) = when (item) {
             is UiMovie.Progress -> PROGRESS
-            is UiMovie.Base -> FAILURE
-            is UiMovie.Failure -> BASE
+            is UiMovie.Base -> BASE
+            is UiMovie.Failure -> FAILURE
             else -> throw IllegalArgumentException("MovieItemToIntViewTypeMapper.Base viewType() doesn't process $item")
         }
 

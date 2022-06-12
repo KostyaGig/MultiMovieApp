@@ -2,8 +2,9 @@ package ru.zinoview.multimovieapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import ru.zinoview.multimovieapp.MovieApp
+import ru.zinoview.movies.presentation.MovieViewHolderByViewType
+import ru.zinoview.movies.presentation.MoviesAdapter
+import ru.zinoview.movies.presentation.UiMovieDiffUtilCallback
 import ru.zinoview.multimovieapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,11 +21,18 @@ class MainActivity : AppCompatActivity() {
         nullBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(nullBinding?.root)
 
-        viewModel.movies()
+        val adapter = MoviesAdapter.Base(
+            UiMovieDiffUtilCallback(),
+            MovieViewHolderByViewType.Base()
+        )
+
+        binding.moviesRecView.adapter = adapter
 
         viewModel.observe(this) { uiMoves ->
-            Log.d("zinoviewk",uiMoves.toString())
+            uiMoves.show(adapter)
         }
+
+        viewModel.movies()
 
     }
 

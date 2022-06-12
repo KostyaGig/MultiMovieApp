@@ -13,7 +13,7 @@ interface MoviesAdapter : Adapter<UiMovie> {
         viewHolderByViewType: MovieViewHolderByViewType
     ) : Adapter.Base<UiMovie,UiMovie>(
         callback,viewHolderByViewType
-    ) {
+    ),MoviesAdapter {
 
         class ProgressViewHolder(
             binding: ProgressItemBinding

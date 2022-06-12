@@ -1,6 +1,5 @@
 package ru.zinoview.movies.presentation
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import ru.zinoview.coreuimodule.BaseViewModel
 import ru.zinoview.coreuimodule.DispatcherWork
@@ -19,6 +18,9 @@ interface MoviesViewModel : Observe<UiMovies>{
     ) : MoviesViewModel, BaseViewModel.Base<UiMovies>(communication) {
 
         override fun movies() {
+            communication.map(
+                UiMovies.Base(listOf(UiMovie.Progress))
+            )
             work.execute(viewModelScope,{
                 interactor.data().map(mapper)
             },{ uiMovies ->
