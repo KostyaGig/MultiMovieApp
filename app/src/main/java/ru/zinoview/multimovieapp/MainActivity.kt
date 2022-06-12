@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             MovieViewHolderByViewType.Base()
         )
 
+
         binding.moviesRecView.adapter = adapter
 
         viewModel.observe(this) { uiMoves ->
