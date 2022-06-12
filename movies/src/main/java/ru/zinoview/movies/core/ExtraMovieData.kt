@@ -6,4 +6,8 @@ interface ExtraMovieData {
         private val description: String,
         private val year: String
     ) : ExtraMovieData
+
+    class EmptyDescription(
+        private val year: String
+    ) : ExtraMovieData
 }

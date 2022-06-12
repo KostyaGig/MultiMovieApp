@@ -24,15 +24,24 @@ interface CloudMovies {
             @SerializedName("year")
             private val year: Int,
             @SerializedName("image_url")
-            private val image: String,
+            private val image: String?,
             @SerializedName("description")
-            private val description: String,
+            private val description: String?,
         ) : CloudMovie {
 
-            override fun <T> map(mapper: MovieMapper<T>) = mapper.map(
-                MainMovieData.Base(id.toString(), image, title),
-                ExtraMovieData.Base(description, year.toString())
-            )
+            override fun <T> map(mapper: MovieMapper<T>): T {
+                val mainData = if (image == null) {
+                    MainMovieData.EmptyImage(id.toString(),title)
+                } else {
+                    MainMovieData.Base(id.toString(), image, title)
+                }
+                val extraData = if (description == null) {
+                    ExtraMovieData.EmptyDescription(year.toString())
+                } else {
+                    ExtraMovieData.Base(description, year.toString())
+                }
+                return mapper.map(mainData, extraData)
+            }
         }
 
         class Mapped(

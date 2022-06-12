@@ -1,8 +1,8 @@
 package ru.zinoview.movies.presentation
 
-import ru.zinoview.R
 import ru.zinoview.core.Mapper
 import ru.zinoview.core.ResourceProvider
+import ru.zinoview.movies.R
 import ru.zinoview.movies.domain.DomainException
 
 interface DomainExceptionToUiStringMapper : Mapper<DomainException,String> {
