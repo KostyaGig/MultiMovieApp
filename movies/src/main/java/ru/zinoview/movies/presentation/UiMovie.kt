@@ -1,5 +1,6 @@
 package ru.zinoview.movies.presentation
 
+import android.util.Log
 import android.widget.TextView
 import ru.zinoview.coreuimodule.Bind
 import ru.zinoview.coreuimodule.Same
