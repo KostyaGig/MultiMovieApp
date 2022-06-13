@@ -1,6 +1,7 @@
 package ru.zinoview.movie.presentation
 
 import ru.zinoview.core.Mapper
+import ru.zinoview.coremoviemodule.UiDetailMovie
 import ru.zinoview.coreuimodule.BaseViewModel
 import ru.zinoview.coreuimodule.Observe
 

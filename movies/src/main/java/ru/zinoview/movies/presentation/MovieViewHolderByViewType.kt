@@ -9,7 +9,9 @@ import ru.zinoview.movies.databinding.ProgressItemBinding
 
 interface MovieViewHolderByViewType : ViewHolderByViewType<UiMovie> {
 
-    class Base : MovieViewHolderByViewType {
+    class Base(
+        private val listener: UiMovieItemClickListener = UiMovieItemClickListener.Empty
+    ) : MovieViewHolderByViewType {
 
         override fun viewType(item: UiMovie) = when (item) {
             is UiMovie.Progress -> PROGRESS
@@ -26,7 +28,8 @@ interface MovieViewHolderByViewType : ViewHolderByViewType<UiMovie> {
                 FailureItemBinding.inflate(inflater,parent ,false)
             )
             BASE -> MoviesAdapter.Base.SuccessViewHolder(
-                MovieItemBinding.inflate(inflater,parent ,false)
+                MovieItemBinding.inflate(inflater,parent ,false),
+                listener
             )
             else -> throw IllegalArgumentException("MovieItemToIntViewTypeMapper.Base doesn't viewHolder() process $viewType")
         }

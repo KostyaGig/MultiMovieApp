@@ -10,7 +10,7 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<B : ViewBinding>(
     @LayoutRes id: Int
-) : Fragment(id) {
+) : Fragment(id), Back {
 
     private var _binding: B? = null
 

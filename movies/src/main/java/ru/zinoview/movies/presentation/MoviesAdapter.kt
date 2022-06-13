@@ -1,5 +1,7 @@
 package ru.zinoview.movies.presentation
 
+import ru.zinoview.coremoviemodule.ImageMovieViewWrapper
+import ru.zinoview.coremoviemodule.TextMovieViewWrapper
 import ru.zinoview.coreuimodule.Adapter
 import ru.zinoview.coreuimodule.BaseViewHolder
 import ru.zinoview.movies.databinding.FailureItemBinding
@@ -25,25 +27,31 @@ interface MoviesAdapter : Adapter<UiMovie> {
 
             override fun bind(item: UiMovie) = item.bind(
                 Pair(
-                    listOf(TextViewWrapper.Error(binding.errorMessageTv)),
-                    ImageViewWrapper.Empty
+                    listOf(TextMovieViewWrapper.Error(binding.errorMessageTv)),
+                    ImageMovieViewWrapper.Empty
                 )
             )
         }
 
         class SuccessViewHolder(
-            private val binding: MovieItemBinding
+            private val binding: MovieItemBinding,
+            private val listener: UiMovieItemClickListener
         ) : BaseViewHolder<UiMovie>(binding.root) {
 
-            override fun bind(item: UiMovie) = item.bind(
-                Pair(
-                    listOf(
-                        TextViewWrapper.Title(binding.movieTitle),
-                        TextViewWrapper.Description(binding.movieDescription)
-                    ),
-                    ImageViewWrapper.Base(binding.movieImage)
+            override fun bind(item: UiMovie) {
+                item.bind(
+                    Pair(
+                        listOf(
+                            TextMovieViewWrapper.Title(binding.movieTitle),
+                            TextMovieViewWrapper.Description(binding.movieDescription)
+                        ),
+                        ImageMovieViewWrapper.Base(binding.movieImage)
+                    )
                 )
-            )
+
+                itemView.setOnClickListener { listener.onItemClick(item) }
+            }
+
         }
     }
 }

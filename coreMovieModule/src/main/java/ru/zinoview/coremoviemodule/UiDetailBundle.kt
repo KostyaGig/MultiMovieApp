@@ -1,10 +1,9 @@
-package ru.zinoview.movie.presentation
-
+package ru.zinoview.coremoviemodule
 
 interface UiDetailBundle : ru.zinoview.coreuimodule.Bundle<UiDetailMovie> {
 
     class Base(
-        bundleWrapper: UiDetailBundleWrapper
+        bundleWrapper: UiDetailBundleWrapper = UiDetailBundleWrapper.Empty
     ) : UiDetailBundle, ru.zinoview.coreuimodule.Bundle.Base<UiDetailMovie>(bundleWrapper,KEY) {
 
         private companion object {

@@ -7,13 +7,14 @@ import java.lang.IllegalStateException
 
 interface BundleWrapper<T : Parcelable> {
 
-    fun bundle(key: String) : T = throw IllegalStateException("BundleWrapper.bundle()")
-
+    fun bundle(key: String) : T = throw IllegalStateException("BundleWrapper.bundle(key)")
+    fun bundle() : Bundle = throw IllegalStateException("BundleWrapper.bundle()")
     abstract class Base<T : Parcelable>(
         private val bundle: Bundle
     ) : BundleWrapper<T> {
 
         override fun bundle(key: String): T = bundle.getParcelable(key)!!
+        override fun bundle() = bundle
     }
 
     object Empty : BundleWrapper<ParcelableColorSpace>
