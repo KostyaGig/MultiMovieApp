@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import ru.zinoview.core.MovieApplication
 import ru.zinoview.coreuimodule.BaseFragment
 import ru.zinoview.movies.R
@@ -13,19 +13,15 @@ import ru.zinoview.movies.presentation.di.MoviesComponent
 
 class MoviesFragment  : BaseFragment<MoviesFragmentBinding>(R.layout.movies_fragment) {
 
-    private val componentViewModel by lazy {
-        val factory = MoviesComponentViewModelFactory.Base()
-        ViewModelProvider(this,factory)[MoviesComponentViewModel.Base::class.java]
-    }
+    private val componentViewModel: MoviesComponentViewModel.Base by viewModels()
 
-    // todo try to use by viewModels()
-    private val viewModel by lazy {
+    private val factory by lazy{
         val component = (requireActivity().application as MovieApplication<MoviesComponent>).component()
-        val factory = componentViewModel.moviesViewModelFactory(component)
-        ViewModelProvider(this,factory)[MoviesViewModel.Base::class.java]
+        componentViewModel.moviesViewModelFactory(component)
     }
 
-    // todo refactor
+    private val viewModel: MoviesViewModel.Base by viewModels({ this },{ factory})
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
