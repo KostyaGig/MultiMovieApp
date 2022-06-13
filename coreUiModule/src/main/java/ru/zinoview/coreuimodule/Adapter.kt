@@ -1,5 +1,6 @@
 package ru.zinoview.coreuimodule
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -15,6 +16,7 @@ interface Adapter<T : UiModel> {
         override fun update(data: List<T>) {
             val list = data.map { item -> item as E }
             submitList(list)
+            Log.d("zinoviewk","update list $list")
         }
 
         override fun getItemViewType(position: Int)
