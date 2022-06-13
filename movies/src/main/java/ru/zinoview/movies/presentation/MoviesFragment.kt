@@ -16,7 +16,7 @@ class MoviesFragment  : BaseFragment<MoviesFragmentBinding>(R.layout.movies_frag
     private val componentViewModel: MoviesComponentViewModel.Base by viewModels()
 
     private val factory by lazy{
-        val component = (requireActivity().application as MovieApplication<MoviesComponent>).component()
+        val component = (requireActivity().application as MovieApplication).component(MoviesScreen) as MoviesComponent
         componentViewModel.moviesViewModelFactory(component)
     }
 

@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/coreUiModule" />
+            <option value="$PROJECT_DIR$/movie" />
             <option value="$PROJECT_DIR$/movies" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>
