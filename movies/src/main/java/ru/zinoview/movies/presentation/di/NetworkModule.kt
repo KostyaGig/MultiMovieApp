@@ -1,9 +1,10 @@
 package ru.zinoview.movies.presentation.di
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import ru.zinoview.core.ResourceProvider
+import ru.zinoview.movies.data.cloud.Description
 import ru.zinoview.movies.data.cloud.MoviesCloudDataSource
 import ru.zinoview.movies.data.cloud.MoviesService
 import ru.zinoview.movies.data.cloud.ToCloudMovieMapper
@@ -19,6 +20,6 @@ object NetworkModule {
 
     @Provides
     @MoviesScope
-    fun bindMoviesCloudDataSource(service: MoviesService): MoviesCloudDataSource
-        = MoviesCloudDataSource.Base(service,ToCloudMovieMapper.Base())
+    fun provideMoviesCloudDataSource(service: MoviesService,resourceProvider: ResourceProvider): MoviesCloudDataSource
+        = MoviesCloudDataSource.Base(service,ToCloudMovieMapper.Base(),Description.Short(),Description.Empty(resourceProvider))
 }
