@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 interface MoviesRepository<T> : Data<T> {
 
-    class Base (
+    class Base @Inject constructor(
         private val cloudDataSource: MoviesCloudDataSource,
         private val mapper: ToMovieMapper
     ) : MoviesRepository<DataMovies> {

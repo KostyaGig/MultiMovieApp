@@ -1,5 +1,6 @@
 package ru.zinoview.movies.presentation
 
+import android.util.Log
 import android.widget.TextView
 import ru.zinoview.coreuimodule.Bind
 import ru.zinoview.coreuimodule.Same
@@ -24,9 +25,20 @@ sealed class UiMovie : UiModel, Same<UiMovie>, Bind<TextView>, MovieSame {
         private val description: String,
         private val year: String,
     ) : UiMovie() {
+        override fun sameMain(item: UiMovie)
+            = item.sameId(id)
 
-        override fun sameMain(item: UiMovie) = item.sameId(id)
-        override fun sameData(item: UiMovie) = item.sameData(title, description)
+        override fun sameData(item: UiMovie) = true
+
+        override fun sameId(id: String)
+            = this.id == id
+
+        override fun sameData(title: String, description: String)
+            = this.title == title && this.description == description
+
+        override fun bind(data: TextView) {
+            data.text = title
+        }
     }
 
     data class Failure(

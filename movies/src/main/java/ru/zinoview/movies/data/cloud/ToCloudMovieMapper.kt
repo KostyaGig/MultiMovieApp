@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 interface ToCloudMovieMapper : MovieMapper<CloudMovies.CloudMovie> {
 
-    class Base : ToCloudMovieMapper {
+    class Base @Inject constructor(): ToCloudMovieMapper {
 
         override fun map(
             mainData: MainMovieData,

@@ -18,9 +18,9 @@ interface MoviesViewModel : Observe<UiMovies>{
     ) : MoviesViewModel, BaseViewModel.Base<UiMovies>(communication) {
 
         override fun movies() {
-            communication.map(
-                UiMovies.Base(listOf(UiMovie.Progress))
-            )
+//            communication.map(
+//                UiMovies.Base(listOf(UiMovie.Progress))
+//            )
             work.execute(viewModelScope,{
                 interactor.data().map(mapper)
             },{ uiMovies ->
@@ -28,4 +28,5 @@ interface MoviesViewModel : Observe<UiMovies>{
             })
         }
     }
+
 }

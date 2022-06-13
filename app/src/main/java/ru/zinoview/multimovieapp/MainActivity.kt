@@ -2,15 +2,24 @@ package ru.zinoview.multimovieapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.zinoview.movies.presentation.MovieViewHolderByViewType
-import ru.zinoview.movies.presentation.MoviesAdapter
-import ru.zinoview.movies.presentation.UiMovieDiffUtilCallback
+import android.util.Log
+import androidx.lifecycle.ViewModelProvider
+import ru.zinoview.movies.presentation.*
+import ru.zinoview.movies.presentation.di.MoviesComponent
 import ru.zinoview.multimovieapp.databinding.ActivityMainBinding
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+    private val componentViewModel by lazy {
+        val factory = MoviesComponentViewModelFactory.Base()
+        ViewModelProvider(this,factory)[MoviesComponentViewModel.Base::class.java]
+    }
+
     private val viewModel by lazy {
-        (application as MovieApp).viewModel(this)
+        val component = (application as MovieApp).moviesComponent
+        val factory = componentViewModel.moviesViewModelFactory(component)
+        ViewModelProvider(this,factory)[MoviesViewModel.Base::class.java]
     }
 
     private var nullBinding: ActivityMainBinding? = null
@@ -33,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.movies()
-
     }
 
 }

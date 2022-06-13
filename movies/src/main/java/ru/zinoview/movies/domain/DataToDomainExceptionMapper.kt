@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 interface DataToDomainExceptionMapper : Mapper<Exception,DomainException> {
 
-    class Base : DataToDomainExceptionMapper {
+    class Base @Inject constructor(): DataToDomainExceptionMapper {
         override fun map(e: Exception): DomainException {
             return when(e) {
                 is UnknownHostException -> DomainException.NoInternetConnection()

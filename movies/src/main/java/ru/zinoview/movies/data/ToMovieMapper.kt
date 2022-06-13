@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 interface ToMovieMapper : MovieMapper<Movie> {
 
-    class Base : ToMovieMapper {
+    class Base @Inject constructor(): ToMovieMapper {
         override fun map(mainData: MainMovieData, extraData: ExtraMovieData)
             = Movie.Base(mainData, extraData)
     }

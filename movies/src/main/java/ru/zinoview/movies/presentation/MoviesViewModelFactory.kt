@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import ru.zinoview.core.ResourceProvider
 import ru.zinoview.coreuimodule.*
 import ru.zinoview.movies.domain.MoviesInteractor
+import java.lang.IllegalStateException
 
 interface MoviesViewModelFactory : ViewModelProvider.Factory {
 
@@ -23,6 +24,11 @@ interface MoviesViewModelFactory : ViewModelProvider.Factory {
                 )
             ),UiMoviesCommunication.Base()
         ) as T
+    }
+
+    object Empty : MoviesViewModelFactory {
+        override fun <T : ViewModel> create(modelClass: Class<T>)
+            = throw IllegalStateException("MoviesViewModelFactory.Empty -> create()")
     }
 
 }
