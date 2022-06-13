@@ -1,12 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/title_movie_tv"
     style="@style/TextAppearance.AppCompat"
     tools:text="Title"
-    android:layout_margin="10dp"
-    />
+    android:layout_margin="@dimen/movie_item_space"
+    android:orientation="vertical"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="@dimen/user_card_view_corner_radius">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/movie_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:src="@drawable/ic_launcher_background"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Title"
+            style="@style/TextAppearance.AppCompat"
+            android:layout_margin="@dimen/movie_item_space"/>
+
+        <TextView
+            android:id="@+id/movie_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="The short description"
+            style="@style/TextAppearance.AppCompat.Small"/>
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
 
