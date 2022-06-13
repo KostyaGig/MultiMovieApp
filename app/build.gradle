@@ -39,10 +39,13 @@ android {
 dependencies {
 
 
-    implementation project(":movies")
     implementation project(":core")
-    implementation project(":coreUiModule")
     implementation project(":navigation")
+    implementation project(":coreUiModule")
+    implementation project(":coreMovieModule")
+    implementation project(":movies")
+    implementation project(":movie")
+
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'

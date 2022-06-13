@@ -1,20 +1,23 @@
 package ru.zinoview.movies.presentation
 
-import android.util.Log
-import android.widget.TextView
+import ru.zinoview.coremoviemodule.ImageMovieViewWrapper
+import ru.zinoview.coremoviemodule.TextMovieViewWrapper
 import ru.zinoview.coreuimodule.Bind
 import ru.zinoview.coreuimodule.Same
 import ru.zinoview.coreuimodule.UiModel
-import ru.zinoview.coreuimodule.ViewWrapper
+import ru.zinoview.movies.core.BaseMovie
+import ru.zinoview.movies.core.ExtraMovieData
+import ru.zinoview.movies.core.MainMovieData
+import ru.zinoview.movies.core.MovieMapper
 
-sealed class UiMovie : UiModel, Same<UiMovie>, Bind<Pair<List<TextViewWrapper>,ImageViewWrapper>>, MovieSame {
+sealed class UiMovie : UiModel, Same<UiMovie>, Bind<Pair<List<TextMovieViewWrapper>,ImageMovieViewWrapper>>, MovieSame, BaseMovie {
 
     override fun sameMain(item: UiMovie) = false
     override fun sameData(item: UiMovie) = false
     override fun sameId(id: String) = false
     override fun sameData(title: String, description: String) = false
 
-    override fun bind(data: Pair<List<TextViewWrapper>, ImageViewWrapper>) = Unit
+    override fun bind(data: Pair<List<TextMovieViewWrapper>, ImageMovieViewWrapper>) = Unit
 
     object Progress : UiMovie()
 
@@ -37,19 +40,22 @@ sealed class UiMovie : UiModel, Same<UiMovie>, Bind<Pair<List<TextViewWrapper>,I
         override fun sameData(title: String, description: String)
             = this.title == title && this.description == description
 
-        override fun bind(data: Pair<List<TextViewWrapper>, ImageViewWrapper>) {
+        override fun bind(data: Pair<List<TextMovieViewWrapper>, ImageMovieViewWrapper>) {
             val texts = data.first
             val image = data.second
             texts.forEach { text -> text.show(Pair(title,shortDescription)) }
             image.show(url)
         }
+
+        override fun <T> map(mapper: MovieMapper<T>)
+            = mapper.map(MainMovieData.WithImage(id,title,url),ExtraMovieData.WithDescription(description, shortDescription, year))
     }
 
     data class Failure(
         private val errorMessage: String
     ) : UiMovie() {
 
-        override fun bind(data: Pair<List<TextViewWrapper>, ImageViewWrapper>) {
+        override fun bind(data: Pair<List<TextMovieViewWrapper>, ImageMovieViewWrapper>) {
             val errorTextView = data.first.first()
             errorTextView.show(Pair(errorMessage,errorMessage))
         }

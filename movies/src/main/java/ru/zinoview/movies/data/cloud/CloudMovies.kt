@@ -38,7 +38,7 @@ interface CloudMovies {
                 val mainData = if (image == null) {
                     MainMovieData.EmptyImage(id.toString(),title)
                 } else {
-                    MainMovieData.WithImage(id.toString(), image, title)
+                    MainMovieData.WithImage(id.toString(),title, image)
                 }
                 val extraData = if (description == null) {
                     ExtraMovieData.EmptyDescription(emptyDescription.map(""),year.toString())

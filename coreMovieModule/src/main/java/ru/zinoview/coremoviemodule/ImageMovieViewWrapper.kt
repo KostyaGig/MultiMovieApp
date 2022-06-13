@@ -1,16 +1,17 @@
-package ru.zinoview.movies.presentation
+package ru.zinoview.coremoviemodule
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import ru.zinoview.coreuimodule.ViewWrapper
 
-interface ImageViewWrapper : ViewWrapper<String> {
+interface ImageMovieViewWrapper : ViewWrapper<String> {
 
     override fun show(data: String) = Unit
+
     class Base(
         private val image: ImageView
-    ) : ImageViewWrapper {
+    ) : ImageMovieViewWrapper {
 
         override fun show(url: String) {
             Glide.with(image)
@@ -22,5 +23,5 @@ interface ImageViewWrapper : ViewWrapper<String> {
         }
     }
 
-    object Empty : ImageViewWrapper
+    object Empty : ImageMovieViewWrapper
 }
