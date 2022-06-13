@@ -2,10 +2,11 @@ package ru.zinoview.movies.presentation
 
 import ru.zinoview.movies.core.*
 import ru.zinoview.movies.domain.DomainException
+import javax.inject.Inject
 
 interface DomainToUiMoviesMapper : MoviesMapper<List<UiMovie>,DomainException> {
 
-    class Base(
+    class Base @Inject constructor(
         private val mapper: DomainToUiMovieMapper,
         private val exceptionMapper: DomainExceptionToUiStringMapper
     ) : DomainToUiMoviesMapper {

@@ -3,10 +3,11 @@ package ru.zinoview.movies.data.cloud
 import ru.zinoview.movies.core.ExtraMovieData
 import ru.zinoview.movies.core.MainMovieData
 import ru.zinoview.movies.core.MovieMapper
+import javax.inject.Inject
 
 interface ToCloudMovieMapper : MovieMapper<CloudMovies.CloudMovie> {
 
-    class Base : ToCloudMovieMapper {
+    class Base @Inject constructor(): ToCloudMovieMapper {
 
         override fun map(
             mainData: MainMovieData,

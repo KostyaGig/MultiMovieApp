@@ -1,5 +1,6 @@
 package ru.zinoview.movies.presentation
 
+import android.util.Log
 import ru.zinoview.coreuimodule.Adapter
 import ru.zinoview.coreuimodule.BaseViewHolder
 import ru.zinoview.movies.databinding.FailureItemBinding

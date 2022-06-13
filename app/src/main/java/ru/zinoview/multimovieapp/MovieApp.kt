@@ -1,45 +1,21 @@
 package ru.zinoview.multimovieapp
 
 import android.app.Application
-import androidx.lifecycle.*
-import ru.zinoview.core.ResourceProvider
-import ru.zinoview.core.cloud.NetworkServiceProvider
-import ru.zinoview.movies.data.MoviesRepository
-import ru.zinoview.movies.data.ToMovieMapper
-import ru.zinoview.movies.data.cloud.MoviesCloudDataSource
-import ru.zinoview.movies.data.cloud.ToCloudMovieMapper
-import ru.zinoview.movies.domain.DataToDomainExceptionMapper
-import ru.zinoview.movies.domain.DataToDomainMoviesMapper
-import ru.zinoview.movies.domain.MoviesInteractor
-import ru.zinoview.movies.presentation.MoviesViewModel
-import ru.zinoview.movies.presentation.MoviesViewModelFactory
+import ru.zinoview.core.di.CoreComponent
+import ru.zinoview.core.di.DaggerCoreComponent
+import ru.zinoview.movies.presentation.di.DaggerMoviesComponent
+import ru.zinoview.movies.presentation.di.MoviesComponent
 
 class MovieApp : Application() {
 
-    private lateinit var factory: MoviesViewModelFactory
+    lateinit var coreComponent: CoreComponent
+    lateinit var moviesComponent: MoviesComponent
 
     override fun onCreate() {
         super.onCreate()
-        val resourceProvider = ResourceProvider.Base(this)
-        val networkProvider = NetworkServiceProvider.Base()
 
-        val interactor = MoviesInteractor.Base(
-            MoviesRepository.Base(
-                MoviesCloudDataSource.Base(
-                    networkProvider,ToCloudMovieMapper.Base()
-                ),
-                ToMovieMapper.Base()
-            ),
-            DataToDomainMoviesMapper.Base(DataToDomainExceptionMapper.Base())
-        )
-
-        val delayInteractor  = MoviesInteractor.Delay(3000,interactor)
-
-        factory = MoviesViewModelFactory.Base(delayInteractor, resourceProvider)
-
+        coreComponent = DaggerCoreComponent.builder().bindContext(this).build()
+        moviesComponent = DaggerMoviesComponent.builder().coreComponent(coreComponent).build()
     }
-
-    fun viewModel(owner: ViewModelStoreOwner) : MoviesViewModel
-        = ViewModelProvider(owner,factory)[MoviesViewModel.Base::class.java]
 
 }
