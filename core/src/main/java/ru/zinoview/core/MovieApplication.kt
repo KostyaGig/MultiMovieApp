@@ -1,6 +1,8 @@
 package ru.zinoview.core
 
-interface MovieApplication<T> {
+import ru.zinoview.core.di.Component
 
-    fun component() : T
+interface MovieApplication {
+
+    fun component(screen: Screen) : Component
 }

@@ -6,7 +6,7 @@ import ru.zinoview.movies.presentation.MoviesViewModelFactory
 
 @Component(modules = [MoviesModule::class], dependencies = [CoreComponent::class])
 @MoviesScope
-interface MoviesComponent {
+interface MoviesComponent : ru.zinoview.core.di.Component {
 
     fun moviesViewModelFactory() : MoviesViewModelFactory
 

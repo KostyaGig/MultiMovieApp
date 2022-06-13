@@ -8,8 +8,17 @@
         android:id="@+id/moviesFragment"
         android:name="ru.zinoview.movies.presentation.MoviesFragment"
         android:label="MoviesFragment">
+
+        <action
+            android:id="@+id/action_moviesFragment_to_movieFragment"
+            app:destination="@id/movieFragment"
+            app:popUpTo="@id/moviesFragment"
+            />
     </fragment>
 
-
-
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="ru.zinoview.movie.presentation.MovieFragment"
+        android:label="MovieFragment" >
+    </fragment>
 </navigation>

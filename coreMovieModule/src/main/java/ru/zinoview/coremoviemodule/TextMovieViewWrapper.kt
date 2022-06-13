@@ -1,14 +1,14 @@
-package ru.zinoview.movies.presentation
+package ru.zinoview.coremoviemodule
 
 import android.widget.TextView
 import ru.zinoview.coreuimodule.ViewWrapper
 
-interface TextViewWrapper : ViewWrapper<Pair<String,String>> {
+interface TextMovieViewWrapper : ViewWrapper<Pair<String, String>> {
 
 
     class Title(
         private val textView: TextView
-    ) : TextViewWrapper {
+    ) : TextMovieViewWrapper {
         override fun show(data: Pair<String, String>) {
             textView.text = data.first
         }
@@ -17,7 +17,7 @@ interface TextViewWrapper : ViewWrapper<Pair<String,String>> {
 
     class Description(
         private val textView: TextView
-    ) : TextViewWrapper {
+    ) : TextMovieViewWrapper {
 
         override fun show(data: Pair<String, String>) {
             textView.text = data.second
@@ -26,7 +26,7 @@ interface TextViewWrapper : ViewWrapper<Pair<String,String>> {
 
     class Error(
         private val textView: TextView
-    ) : TextViewWrapper {
+    ) : TextMovieViewWrapper {
         override fun show(data: Pair<String, String>) {
             textView.text = data.first
         }
